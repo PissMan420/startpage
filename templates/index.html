@@ -1,43 +1,40 @@
 <!DOCTYPE html>
+
 <head>
-    <meta tag='viewport content='width='width=device-width, initial-scale=1'></meta>
+    <meta tag='viewport content=' width='width=device-width, initial-scale=1'>
+    </meta>
     <title>Nouvel onglet</title>
-    <link rel='stylesheet' href={{ url_for('static', filename='style.css') }}>
+    <link rel='stylesheet' href={{ url_for('static', filename='style.css' ) }}>
     <script src='static/app.js' defer></script>
 </head>
 
 <body>
-    <iframe id='video-player' src="https://www.youtube.com/embed/MtGUTs_HgcE?ecver=1&amp;autoplay=1&amp;disablekb=1&amp;iv_load_policy=3&amp;rel=0&amp;showinfo=0&amp;yt:stretch=16:9&amp;autohide=1&amp;color=white&amp;width=560&amp;width=560" width="560" height="315" allowtransparency="true" frameborder="0"><div><a  id="dga7h6hz" href="https://downloadyou.tube">at this website</a></div><div><a  id="dga7h6hz" href="https://downloadyou.tube/">DLYouTube</a></div><script type="text/javascript">function execute_YTvideo(){return youtube.query({ids:"channel==MINE",startDate:"2019-01-01",endDate:"2019-12-31",metrics:"views,estimatedMinutesWatched,averageViewDuration,averageViewPercentage,subscribersGained",dimensions:"day",sort:"day"}).then(function(e){},function(e){console.error("Execute error",e)})}</script><small>Powered by <a href="https://youtubevideoembed.com/ ">Embed YouTube Video</a></small></iframe>
-    <div class="main-container container">
-        <header>
-            <h1>Bienvenue, {{ name }}</h1>
-            <section>
-                <h1 class="hidden">Controls</h1>
-                <button>Reglage</button>
-            </section>
-        </header>
-        <main>
-            <section id='social-media'>
-                <h1>Résaux Sociaux</h1>
-                <ul></ul>
-            </section>
-            <section id="multimedia">
-                <h1>Multimédia</h1>
-                <ul></ul>
-            </section>
-            <section id='bookmarks'>
-                <h1>Marque-pages</h1>
-                <ul></ul>
-            </section>
-        </main>
-        <footer>
+    <header>
+        <h1>Bienvenue, {{ name }}</h1>
+        <section>
+            <h1 class="hidden">Controls</h1>
+            <button onclick="openSetting();" class='btn gray'>Reglage</button>
+            <button onclick="openAbout();" class="btn blue">À propos</button>
+        </section>
+    </header>
+    <main>
+        <section class="bookmark-container" id="social-media">
+            <h2>Résaux Sociaux</h2>
+            <ul></ul>
+        </section>
+        <section class="bookmark-container" id="multimedia">
+            <h1>Multimédia</h1>
+            <ul></ul>
+        </section>
+        <section class='bookmark-container' id='bookmarks'>
+            <h1>Marque-pages</h1>
+            <ul></ul>
+        </section>
+    </main>
+    <footer>
+        <div class="grid-container">
             <p id="time">16:24</p>
-            <div class="weather-container">
-                <p>Ensolleiler</p>
-                <div id="weather-icon">
-                </div>
-            </div>
-        </footer>
-    </div>
+            <p id="date">Lundi, 12 Janvier 2020</p>
+        </div>
+    </footer>
 </body>
-
