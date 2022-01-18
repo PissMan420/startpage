@@ -7,7 +7,7 @@ function randomInt(min: number, max: number): number {
 }
 
 function choice<T>(array: T[]) {
-    let chosenidx = randomInt(0, array.length - 1);
+    let chosenidx = randomInt(0, array.length);
     return array[chosenidx]
 }
 
