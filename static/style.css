@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Nanum+Myeongjo:wght@700&family=Roboto:wght@500&display=swap');
+
+:root {
+    font-size: 20px;
+    font-family: Dongle, sans-serif;
+}
+
 .hidden {
     display: none;
 }
