@@ -58,27 +58,7 @@ function addBookmark({ category, link, name, icon }: {
     return document.getElementById(id); 
 }
 
-namespace youtubePlayer {
-    /**
-     * Set the youtube player to play the video with the given id.
-     * @param urlOrId The ID (something like this JBFT7w5RpQo) or the video link
-     *   (example: https://www.youtube.com/watch?v=JBFT7w5RpQo) to set the video to.
-     */
-    function setVideo(urlOrId: string) {
-        let id = '';
-        try {
-            id = new URL(urlOrId).searchParams.get('v');
-        } catch {
-            id = urlOrId;
-        }
-        const video = document.getElementById('youtube-player') as HTMLVideoElement;
-        video.src = `https://www.youtube.com/embed/${id}`;
-    }
 
-    document.addEventListener('load', function(){
-        setTimeout(() => setVideo('dQw4w9WgXcQ'), 6000)
-    })
-}
 
 // Append the default bookmarks
 addBookmark({ category: 'social-media', link: 'https://instagram.com', name: 'Instagram' });
