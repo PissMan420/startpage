@@ -9,35 +9,37 @@
 </head>
 
 <body>
-    <header>
-        <h1>Bienvenue, {{ name }}</h1>
-        <section class='flex-container'>
-            <h1 class="hidden">Toolbar</h1>
-            <button onclick="openSetting();" class='btn gray'>Reglage</button>
-            <button onclick="openAbout();" class="btn blue">À propos</button>
-            <input type="text" id="search" placeholder="Rechercher...">
-            <button onclick="search(document.querySelector('#search').value);"
-                class="btn circle">🔍</button>
-        </section>
-    </header>
-    <main>
-        <section class="bookmark-container" id="social-media">
-            <h2>Résaux Sociaux</h2>
-            <ul></ul>
-        </section>
-        <section class="bookmark-container" id="multimedia">
-            <h1>Multimédia</h1>
-            <ul></ul>
-        </section>
-        <section class='bookmark-container' id='bookmarks'>
-            <h1>Marque-pages</h1>
-            <ul></ul>
-        </section>
-    </main>
-    <footer>
-        <div class="grid-item">
-            <p id="time">16<span class="blink">:</span>24</p>
-            <p id="date">Lundi, 12 Janvier 2020</p>
-        </div>
-    </footer>
+    <div id="app">
+        <header>
+            <h1>Bienvenue, {{ name }}</h1>
+            <section class='flex-container'>
+                <h1 class="hidden">Toolbar</h1>
+                <button onclick="openSetting();" class='btn gray'>Reglage</button>
+                <button onclick="openAbout();" class="btn blue">À propos</button>
+                <input type="text" id="search" placeholder="Rechercher...">
+                <button onclick="search(document.querySelector('#search').value);"
+                    class="btn circle">🔍</button>
+            </section>
+        </header>
+        <main>
+            <section class="bookmark-container" id="social-media">
+                <h2>Résaux Sociaux</h2>
+                <ul></ul>
+            </section>
+            <section class="bookmark-container" id="multimedia">
+                <h1>Multimédia</h1>
+                <ul></ul>
+            </section>
+            <section class='bookmark-container' id='bookmarks'>
+                <h1>Marque-pages</h1>
+                <ul></ul>
+            </section>
+        </main>
+        <footer>
+            <div class="grid-item">
+                <p id="time">16<span class="blink">:</span>24</p>
+                <p id="date">Lundi, 12 Janvier 2020</p>
+            </div>
+        </footer>
+    </div>
 </body>
