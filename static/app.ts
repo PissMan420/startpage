@@ -28,7 +28,7 @@ function randId(len = 12): string {
         alphabet.push(String.fromCharCode(charcode));
     for (let charcode = 65; charcode <= 90; charcode++)
         alphabet.push(String.fromCharCode(charcode).toLowerCase());
- 
+
     let str = '';
     for (let _ = 0; _ < len; _++)
         str += choice(alphabet);
@@ -40,10 +40,10 @@ function randId(len = 12): string {
 * @return The list element of the link category
 */
 function addBookmark({ category, link, name, icon }: {
-   category: Category;
-   link: string;
-   name: string;
-   icon?: string;
+    category: Category;
+    link: string;
+    name: string;
+    icon?: string;
 }) {
     const id = randId(6);
     const categoryBtnList = document.getElementById(category).querySelector('ul') as HTMLUListElement;
@@ -55,7 +55,42 @@ function addBookmark({ category, link, name, icon }: {
     template += '</li>';
 
     categoryBtnList.insertAdjacentHTML('beforeend', template);
-    return document.getElementById(id); 
+
+    const bookmarkElem = document.getElementById(id) as HTMLLIElement;
+    bookmarkElem.addEventListener('click', () => {
+        const linkElem = bookmarkElem.querySelector('a') as HTMLAnchorElement;
+        linkElem.click();
+    });
+    if (category === 'bookmarks') {
+        bookmarkElem.addEventListener('contextmenu', (e) => {
+            e.preventDefault();
+            const menu = document.getElementById('context-menu') as HTMLUListElement;
+            menu.style.left = `${e.clientX}px`;
+            menu.style.top = `${e.clientY}px`;
+            menu.style.display = 'block';
+
+            function contextmenuOnClick(e) {
+                const target = e.target as HTMLElement;
+                if (target.classList.contains('delete')) {
+                    bookmarkElem.remove(); // TODO: remove from local storage
+                    menu.style.display = 'none';
+                } else if (target.classList.contains('edit')) {
+                    let newTitle = prompt('Enter new title', bookmarkElem.querySelector('a').innerText);
+                    if (newTitle !== null) {
+                        bookmarkElem.querySelector('a').innerText = newTitle;
+                        menu.style.display = 'none';
+                    }
+                } else if (target.classList.contains('cancel')) {
+                    menu.style.display = 'none';
+                }
+                menu.removeEventListener('click', contextmenuOnClick);
+            }
+
+            menu.addEventListener('click', contextmenuOnClick);
+
+        });
+    }
+    return bookmarkElem
 }
 
 
@@ -65,4 +100,4 @@ addBookmark({ category: 'social-media', link: 'https://instagram.com', name: 'In
 addBookmark({ category: 'social-media', link: 'https://discord.com/app', name: 'Discord' });
 addBookmark({ category: 'social-media', link: 'https://reddit.com', name: 'Reddit' });
 addBookmark({ category: 'multimedia', link: 'https://netflix.com', name: 'Netflix' });
-addBookmark({category: 'multimedia', link: 'https://youtube.com', name: 'YouTube' });
+addBookmark({ category: 'multimedia', link: 'https://youtube.com', name: 'YouTube' });

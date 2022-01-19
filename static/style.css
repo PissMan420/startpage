@@ -187,3 +187,88 @@ footer {
 .widget-contaier, .bookmark-container {
     margin: 0 0.5em;
 }
+
+#context-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    background: #fff;
+}
+
+#context-menu ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+#context-menu ul li {
+    font-size: 1.5em;
+    padding: 0.025em;
+    cursor: pointer;
+}
+
+#context-menu ul li:hover {
+    background: #bbb;
+    color: #fff;
+}
+
+#context-menu ul li.delete {
+    background: #f00;
+    color: #fff;
+}
+
+#context-menu ul li.delete:hover {
+    background: #d00;
+}
+
+#context-menu ul li.edit {
+    background: #0e0;
+    color: #fff;
+}
+
+#context-menu ul li.edit:hover {
+    background: #0d0;
+}
+
+#context-menu ul li.cancel {
+    background: #fff;
+    color: #000;
+}
+
+#context-menu ul li.cancel:hover {
+    background: #ddd;
+}
+
+#context-menu ul li.cancel::after {
+    content: "✕";
+}
+
+#context-menu ul li.cancel.edit::after {
+    content: "✖";
+}
+
+.bookmark-container li.edit {
+    background: #0f0;
+    color: #fff;
+}
+
+.bookmark-container li.edit:hover {
+    background: #0d0;
+}
+
+.bookmark-container li.edit::after {
+    content: "✖";
+}
+
+.bookmark-container li.delete {
+    background: #f00;
+    color: #fff;
+}
