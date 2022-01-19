@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Dongle:wght@300;400;700&family=Nanum+Myeongjo:wght@700&family=Roboto:wght@500&display=swap');
 
 :root {
-    font-size: 20px;
     font-family: Dongle, sans-serif;
 }
 
@@ -10,7 +9,14 @@
 }
 
 /* Removed extra margin that headings have by default */
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5, h6,
+p {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+ul {
+    padding-left: 0;
     margin-bottom: 0;
     margin-top: 0;
 }
@@ -70,4 +76,114 @@ h1 {
     100% {
         opacity: 0;
     }
+}
+
+#app {
+    display: flex;
+    flex-direction: column;
+
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 60%;
+    height: 90%;
+
+    background: radial-gradient(
+        #bbb,
+        #eee,
+        #fff
+    );
+
+    border:rgb(82, 181, 228) 2px solid;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.bookmark-container ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+}
+
+/* .bookmark-container ul li::before {
+    content: '– ';
+} */
+
+.bookmark-container li {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;;    
+    font-size: 1.3em;
+    height: calc(1em + 1px);
+    cursor: pointer;
+}
+
+.bookmark-container li:hover {
+    border-bottom: #000 2px double;
+} 
+
+.bookmark-container li img {
+    width: 1em;
+    height: auto;
+    margin-right: 0.5em;
+}
+
+.bookmark-container h2 {
+    height: 1em;
+}
+
+.bookmark-container h2::after {
+    content: ":";
+}
+
+.bookmark-container li a {
+    font-weight: 300;
+    color: black;
+    margin-left: 0.5em;
+    text-decoration: none;
+}
+
+.bookmark-container li a::after {
+    content: "  ";
+}
+
+.date-item {
+    align-self: flex-start;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+#time, #date {
+    font-size: 1.2em;
+    font-weight: 300;
+    margin-left: 0.5em;
+}
+
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 20%;
+}
+
+main {
+    flex-basis: 80%;
+    display: flex;
+    flex-direction: column;
+    flex-flow: wrap;
+}
+
+footer {
+    flex-basis: 10%;
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.widget-contaier, .bookmark-container {
+    margin: 0 0.5em;
 }
