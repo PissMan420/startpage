@@ -250,7 +250,6 @@ footer {
 #context-menu ul li.cancel::after {
     content: "✕";
 }
-
 #context-menu ul li.cancel.edit::after {
     content: "✖";
 }

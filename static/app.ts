@@ -93,7 +93,71 @@ function addBookmark({ category, link, name, icon }: {
     return bookmarkElem
 }
 
+/**
+ * This function format the string `fmt` in a manner similar to c's printf. 
+ * @param fmt The string format, eg: Hello, %s! You are the %dth visitor.
+ * @param args The arguments to be replaced in the format string.
+ * @returns The formatted string.
+ */
+function sprintf(fmt: string, ...args: any[]): string {
+    return fmt.replace(/%[sdf]/g, (match) => {
+        switch (match) {
+            case '%s':
+                return args.shift();
+            case '%d':
+                return args.shift();
+            case '%f':
+                return args.shift();
+        }
+    });
+}
+/**
+ * Set the time element to the the specified time. 
+ * @param time The time to set the time element to.
+*/
+function setTime(time: Date | { hour: number; minute: number; }): void {
+    let hour: number | string;
+    let minute: number | string;
+    if (time instanceof Date) {
+        hour = time.getHours();
+        minute = time.getMinutes();
+    } else {
+        ({ hour, minute } = time);
+    }
+    const timeElem = document.getElementById('time') as HTMLParagraphElement;
+    if (minute < 10)
+        minute = `0${minute}`; 
+    timeElem.innerHTML = sprintf('%d<span class="blink">:</span>%d', hour, minute);
+}
+/**
+ * Set the date element to the the specified date.
+ * The formatted date should look like this: Lundi, 12 Janvier 2020<
+ * @param date The date to set the date element to.
+ */
+function setDate(date: Date | { day: number; month: number; year: number; }): void {
+    let day: number;
+    let month: number;
+    let year: number;
+    if (date instanceof Date) {
+        day = date.getDate();
+        month = date.getMonth();
+        year = date.getFullYear();
+    } else {
+        ({ day, month, year } = date);
+    }
+    const dateElem = document.getElementById('date') as HTMLParagraphElement;
+    dateElem.innerHTML = sprintf('%s, %d %s %d',
+        ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'][new Date(year, month, day).getDay()],
+        day,
+        ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'][month],
+        year);
+}
 
+// Automatically set the time and date.
+setTimeout(function () {
+    setTime(new Date());
+    setDate(new Date());
+}, 1000);
 
 // Append the default bookmarks
 addBookmark({ category: 'social-media', link: 'https://instagram.com', name: 'Instagram' });
