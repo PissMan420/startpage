@@ -100,7 +100,7 @@ function addBookmark({ category, link, name, icon }: {
  * @returns The formatted string.
  */
 function sprintf(fmt: string, ...args: any[]): string {
-    return fmt.replace(/%[sdf]/g, (match) => {
+    return fmt.replace(/%[sdf]/g, match => {
         switch (match) {
             case '%s':
                 return args.shift();
@@ -131,7 +131,7 @@ function setTime(time: Date | { hour: number; minute: number; }): void {
 }
 /**
  * Set the date element to the the specified date.
- * The formatted date should look like this: Lundi, 12 Janvier 2020<
+ * The formatted date should look like this: Lundi, 12 Janvier 2020
  * @param date The date to set the date element to.
  */
 function setDate(date: Date | { day: number; month: number; year: number; }): void {
